@@ -1,11 +1,13 @@
 package com.example.easywallet;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.example.easywallet.adapter.HomePageAdapter;
 import com.example.easywallet.db.DBHelper;
@@ -17,9 +19,11 @@ public class MainActivity extends AppCompatActivity {
 
     private Button mButton1;
     private Button mButton2;
+    private ListView mListView;
     public static ArrayList<ListItem> aList = new ArrayList<>();
-    private ArrayList<ListItem> mList = aList;
+    private static ArrayList<ListItem> mList = aList;
     private HomePageAdapter mAdapter;
+
     private DBHelper mHelper;
     private SQLiteDatabase mDb;
 
@@ -28,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*mHelper = new DBHelper(this);
-        mDb = mHelper.getReadableDatabase();
+        mHelper = new DBHelper(this);
+        mDb = mHelper.getReadableDatabase(); //<<< ปิดตรงนี้ Run ได้ เปิดแล้ว Run ไม่ได้
 
-        loadDataFromDb();*/
+        loadDataFromDb();
 
         mAdapter = new HomePageAdapter(
                 this,
@@ -40,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         );
         mButton1 = (Button) findViewById(R.id.button1);
         mButton2 = (Button) findViewById(R.id.button2);
+        mListView = (ListView) findViewById(R.id.listView2);
+
+        mListView.setAdapter(mAdapter);
 
         mButton1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    /*
+
     private void loadDataFromDb() {
         Cursor cursor = mDb.query(
                 DBHelper.TABLE_NAME_ONE,
@@ -82,5 +89,5 @@ public class MainActivity extends AppCompatActivity {
             aList.add(item);
         }
 
-    }*/
+    }
 }

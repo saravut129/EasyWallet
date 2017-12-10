@@ -28,13 +28,14 @@ import java.util.Locale;
 public class HomePageAdapter extends ArrayAdapter<ListItem> {
 
     private Context mContext;
-    private int mLayoutResId2;
+    private int mLayoutResId;
     private ArrayList<ListItem> mListItem;
 
     public HomePageAdapter(@NonNull Context context, int resource, ArrayList<ListItem> objects) {
         super(context, resource, objects);
+
         this.mContext = context;
-        this.mLayoutResId2 = resource;
+        this.mLayoutResId = resource;
         this.mListItem = objects;
     }
 
@@ -45,7 +46,7 @@ public class HomePageAdapter extends ArrayAdapter<ListItem> {
 
         View v = convertView;
         if(v == null){
-            v = inflater.inflate(mLayoutResId2, null);
+            v = inflater.inflate(mLayoutResId, null);
         }
 
         ImageView iv = v.findViewById(R.id.imageView);

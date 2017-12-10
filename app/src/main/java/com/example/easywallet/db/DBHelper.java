@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "money.db";
     private static final int DATABASE_VERSION = 9;
 
-    public static final String TABLE_NAME_ONE = "money_number1";
+    public static final String TABLE_NAME_ONE = "calculate_number1";
 
     public static final String COL_ID = "_id";
     public static final String COL_DETAILS = "details";
@@ -22,9 +22,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COL_PICTURE = "picture";
 
     private static final String CREATE_TABLE_ONE = "CREATE TABLE " + TABLE_NAME_ONE + "("
-            + COL_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COL_DETAILS + " TEXT, "
-            + COL_DETAILS + " TEXT, "
+            + COL_AMOUNT + " TEXT, "
             + COL_PICTURE + " TEXT)";
 
     public DBHelper(Context context){
